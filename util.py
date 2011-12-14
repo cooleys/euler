@@ -88,3 +88,22 @@ def gcd(a,b):
     if b == 0:
         return a
     return gcd(b, a % b)
+
+# Return the successive denominators of the continued fraction expansion of
+#  the square root of n
+def cf_denom(n):
+    l = [int(sqrt(n))]
+    minus = l[0]
+    denom = n-l[0]**2
+    l.append((minus + l[0]) / denom)
+    if denom == 1:
+        return l
+    while True:
+        minus = abs(minus - l[-1] * denom)
+        temp = n - minus**2
+        assert(temp % denom == 0)
+        denom = temp/denom
+        l.append((minus + l[0]) / denom)
+        if denom == 1:
+            break
+    return l
