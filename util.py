@@ -56,8 +56,7 @@ def factor(n, show=False):
     return factors
 
 # Give the prime factorization of n
-def pf(n, show=False):
-    p = primes(n+1)
+def pf(n, p, show=False):
     factors = []
     while n != 1:
         for prime in p:
